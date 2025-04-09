@@ -1,7 +1,7 @@
-package dev.java10x.CadastroDeNinjas;
+package dev.java10x.CadastroDeNinjas.Ninjas;
 
+import dev.java10x.CadastroDeNinjas.Missoes.MissoesModel;
 import jakarta.persistence.*;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 //Transforma uma classe em uma entidade do banco de dados
 //JPA = Java Persistence API
@@ -17,6 +17,10 @@ public class NinjaModel {
     private String email;
     private int idade;
 
+    // @ManyToOne 1 ninja tem uma única missão
+    @ManyToOne
+    @JoinColumn(name = "missoes_id") //FK
+    private MissoesModel missoes;
 
     public NinjaModel() {
     }
